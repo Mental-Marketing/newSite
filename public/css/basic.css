@@ -1,0 +1,31 @@
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-color: rgb(89, 167, 189);
+    align-items: center;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+.collapse-button {
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1080px) and (orientation: landscape) {
+    img {                                                                                                                                                              width: 45%;
+    }
+}
+
+@media screen and (min-width: 960px) and (orientation: portrait) {
+    img {
+        width: 80%;
+    }
+}
