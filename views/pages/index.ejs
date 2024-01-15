@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <%- include('../parciais/header') %>
+</head>
+
+<body>
+    <div align="center">
+        <img src="images/logoMMkt-1080x1080.png" alt="Um vetor vazio por enquanto" /></p>
+    </div>
+
+    <div class="iframe-container">
+        <iframe src="https://mentalmarketing.com.br/indexB.html" class="iframe-flutuante"></iframe>
+        <button onclick="toggleIframe()" class="collapse-button"><i class="fa-solid fa-robot" id="collapse-icon"></i></button>
+    </div>
+</body>
+
+<script>
+    function toggleIframe() {
+        var iframe = document.querySelector('.iframe-flutuante');
+
+        if (iframe.style.display === 'none' || iframe.style.display === '') {
+            iframe.style.display = 'block';
+        } else {
+            iframe.style.display = 'none';
+        }
+    }
+</script>
+
+</html>
