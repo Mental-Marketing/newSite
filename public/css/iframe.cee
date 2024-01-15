@@ -1,0 +1,29 @@
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.iframe-flutuante {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    border: 0px;
+    height: 481px;
+}
+
+@media screen and (orientation: portrait) {
+    .iframe-container {
+        margin: 0 auto;
+        max-width: calc(100% - 40px);
+    }
+
+    .iframe-flutuante {
+        height: 281px;
+        width: calc(100% - 40px);
+        left: 20px;
+        right: auto;
+    }
+}
