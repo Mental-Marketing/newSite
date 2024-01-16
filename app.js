@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const app = express();
 
 require('dotenv').config();
+console.log(process.env.TESTE_ENV);
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
