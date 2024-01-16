@@ -11,5 +11,5 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 app.listen(4682, () => {
-    console.log('Rodando muito fino na porta 4682');
+    console.log('Rodando suave na porta 4682');
 });
