@@ -17,8 +17,8 @@ app.use(express.json());
 app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://mentalmarketing.com.br/strapi/api/home-page?populate=deep');
-        const data = response.data;
-        res.render('pages/index', { data: data });
+        const homeData = response.data;
+        res.render('pages/index', { homeData: homeData });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error ao obter dados');
