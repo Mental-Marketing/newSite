@@ -10,10 +10,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 
-// app.get('/', function(req, res) {
-//     res.render('pages/index');
-// });
-
 app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://mentalmarketing.com.br/strapi/api/home-page?populate=deep');
