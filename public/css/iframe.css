@@ -1,31 +1,13 @@
 /* Comportamento da bolha do chat */
-
-.iframe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-}
-
+ 
 .iframe-flutuante {
-    display: none;
-    position: fixed;
-    right: 20px;
-    bottom: 80px;
+    display: block;
+    position: relative;
+    top: -22px;
     border: 0px;
-    height: 481px;
-}
-
-@media screen and (orientation: portrait) {
-    .iframe-container {
-        margin: 0 auto;
-        max-width: calc(100% - 40px);
-    }
-
-    .iframe-flutuante {
-        height: 281px;
-        width: calc(100% - 40px);
-        left: 20px;
-        right: auto;
-    }
+    width: 100%; /* Preenche toda a largura da iframe-container */
+    height: 100%; /* Preenche toda a altura da iframe-container */
+    border-radius: 10px; /* Mantém os cantos arredondados */
+    border: none; /* Remove bordas */
+    z-index: 2; /* Sobre o conteúdo da .container */
 }

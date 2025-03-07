@@ -22,5 +22,5 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(4682, () => {
-    console.log('Rodando suave na porta 4682');
+    console.log('Rodando suave na porta 4682!');
 });
