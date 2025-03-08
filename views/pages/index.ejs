@@ -20,7 +20,21 @@
             <div id="iframeContainer" class="iframe-container-hidden">
               <button class="closeIframeBtn" onclick="toggleIframe()"></button>
               <!-- <iframe src="https://mentalmarketing.com.br/zildo" class="iframe-flutuante"></iframe> -->
-              <iframe id="iframeFlutuante" src="http://localhost:4689/" class="iframe-flutuante"></iframe>
+              <!-- <iframe id="iframeFlutuante" src="http://localhost:5674/" class="iframe-flutuante"></iframe> -->
+              <div id="iframeFlutuante" class="iframeFlutuante">
+                <div class="chat-section">
+                    <div class="messages-container">
+                        <!-- as mensagens aparecem aqui -->
+                    </div>
+                </div>
+        
+                <div class="form-section">
+                    <form>
+                        <input type="text" id="textUser" name="textUser" placeholder="Digite sua mensagem..." required>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+              </div>
             </div>
           </div>
           <button onclick="toggleIframe()" class="collapse-button">
@@ -30,7 +44,7 @@
     </div>    
 </body>
 
+<script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>
 
 </html>
-
