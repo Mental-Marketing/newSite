@@ -1,7 +1,8 @@
+// public/js/chat.js
 document.addEventListener("DOMContentLoaded", function() {
     if (performance.navigation.type === 1) {
         localStorage.clear();
-        console.log('O localStorage foi limpo');
+        // console.log('O localStorage foi limpo');
     }
 
     const form = document.querySelector("form");
@@ -45,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const typingIndicator = createTypingIndicator();
         messagesContainer.appendChild(typingIndicator);
         
-        // Aperece e scrolla
+        // Aparece e scrolla
         typingIndicator.style.display = 'block';
         typingIndicator.scrollIntoView({ behavior: 'smooth' });
     }
@@ -60,18 +61,19 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Enviando...';
+        // Remove the following lines to keep the button enabled and text unchanged
+        // submitButton.disabled = true;
+        // submitButton.innerHTML = 'Enviando...';
         
         const textUser = document.getElementById('textUser').value;
         
-        // Adiciona a mensagem do usuário no chat
+        // Add user message to chat
         addMessage(textUser, false);
         
-        // Limpa p campo de mensagens
+        // Clear input field
         document.getElementById('textUser').value = '';
         
-        // Mostra o indicador
+        // Show typing indicator
         showTypingIndicator();
         
         const existingUserKey = localStorage.getItem('userKey');
@@ -97,13 +99,20 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            console.log("Dados recebidos:", data);
+            //console.log("Dados recebidos:", data);
             
-            // Esconde o indicador logo que chegar a mensagem do servidor do robô
+            // Hide typing indicator
             hideTypingIndicator();
             
-            // Adiciona mensgem do robô no chat
-            addMessage(data.respostaBot, true);
+            // Handle multiple bot messages
+            if (Array.isArray(data.respostaBot)) {
+                data.respostaBot.forEach(message => {
+                    addMessage(message, true);
+                });
+            } else if (data.respostaBot) {
+                // Handle single message for backward compatibility
+                addMessage(data.respostaBot, true);
+            }
             
             if (!existingUserKey) {
                 localStorage.setItem('userKey', data.userKey);
@@ -113,13 +122,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
         .catch(error => {
-            hideTypingIndicator(); // Quando acontece um erro, esconde o indicador
+            hideTypingIndicator();
             console.error("Erro ao enviar mensagem:", error);
             alert(`Erro ao enviar mensagem: ${error.message}`);
         })
         .finally(() => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Enviar';
+            // Remove the following lines to keep the button enabled and text unchanged
+            // submitButton.disabled = false;
+            // submitButton.innerHTML = 'Enviar';
         });
     });
-}); 
+});

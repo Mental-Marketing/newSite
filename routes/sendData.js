@@ -18,6 +18,9 @@ marked.setOptions({
     mangle: false
 });
 
+// Add this variable at the top of the file with other constants
+const processedMessageIds = new Set();
+
 // Função para gerar IDs aleatórios
 function generateRandomID(length = 12) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -74,26 +77,33 @@ async function getBotResponse(conversationId, userKey) {
     const response = await axios.get(`${BOTPRESS_CHAT_URL}/conversations/${conversationId}/messages`, { headers: { 'x-user-key': userKey } });
     const messages = response.data.messages;
     
-    console.log('Todas as menssagens:', JSON.stringify(messages, null, 2));
+    console.log('Todas as menssagens até agora:', JSON.stringify(messages, null, 2));
     
-    const botMessages = messages.filter(m => m.userId.startsWith('user_'));
-    // console.log('Bot messages:', JSON.stringify(botMessages, null, 2));
+    // Get messages from bot (messages where userId starts with 'user_')
+    const botMessages = messages
+      .filter(m => m.userId.startsWith('user_'))
+      .filter(m => !processedMessageIds.has(m.id)) // Only get unprocessed messages
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     
     if (botMessages.length > 0) {
-      const rawText = botMessages[0].payload.text;
-      // Convert markdown to HTML and sanitize
-      const htmlContent = sanitize(marked(rawText), {
-        allowedTags: [ 'b', 'i', 'em', 'strong', 'a', 'code', 'pre', 'ul', 'ol', 'li', 'p', 'br' ],
-        allowedAttributes: {
-          'a': [ 'href' ]
-        }
+      // Mark all new messages as processed
+      botMessages.forEach(msg => processedMessageIds.add(msg.id));
+      
+      // Process each message individually
+      const processedMessages = botMessages.map(msg => {
+        return sanitize(marked(msg.payload.text), {
+          allowedTags: [ 'b', 'i', 'em', 'strong', 'a', 'code', 'pre', 'ul', 'ol', 'li', 'p', 'br' ],
+          allowedAttributes: {
+            'a': [ 'href' ]
+          }
+        });
       });
-      // console.log('Selected bot message:', htmlContent);
-      return htmlContent;
+      
+      return processedMessages; // Return array of messages
     }
     
-    console.log('No bot messages found');
-    return "Nenhuma resposta do bot";
+    console.log('No new bot messages found');
+    return null;
   } catch (error) {
     console.error('Erro ao obter resposta do bot:', error);
     console.error('Response data:', error.response?.data);
@@ -106,30 +116,34 @@ const INITIAL_WAIT = 1000;
 
 async function getBotResponseWithRetry(conversationId, userKey) {
     let lastError = null;
+    let hasReceivedResponse = false;
     
     for (let i = 0; i < MAX_RETRIES; i++) {
         console.log(`Tentativa ${i + 1} de ${MAX_RETRIES}`);
         
-        // Progressive delay: 3s, 6s, 9s, 12s
         const waitTime = INITIAL_WAIT * (i + 1);
-        console.log(`Esperando ${waitTime}ms antes de nova tentiva`);
         await new Promise(resolve => setTimeout(resolve, waitTime));
         
         try {
             const response = await getBotResponse(conversationId, userKey);
-            if (response && response !== "Nenhuma resposta do bot") {
-                // console.log('Resposta válida recebida:', response);
+            if (response) {
+                hasReceivedResponse = true;
                 return response;
             }
-            console.log('Sem resposta válida ainda, tentarei novamente');
+            // Continue trying if no new messages
+            console.log('Sem resposta nova ainda, tentarei novamente');
         } catch (error) {
             console.error(`Tentativa ${i + 1} falhou:`, error);
             lastError = error;
         }
     }
     
-    console.error('Todas as tentivas falharam. Fim da linha.:', lastError);
-    return "Desculpe, não obtive resposta do bot no momento";
+    if (!hasReceivedResponse) {
+        console.error('Todas as tentivas falharam:', lastError);
+        return "Desculpe, não obtive resposta do bot no momento";
+    }
+    
+    return null;
 }
 
 // Rota para enviar dados
@@ -150,6 +164,11 @@ router.post('/send-data', async (req, res) => {
       const initialUserKey = generateRandomID();
       userKey = await createUser(initialUserKey);
       await createConversation(conversationId, userKey);
+    }
+
+    // If creating a new conversation, clear the processed messages
+    if (!req.body.conversationId) {
+      processedMessageIds.clear();
     }
 
     // Valida o conteúdo da requisição

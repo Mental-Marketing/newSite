@@ -3,7 +3,6 @@
 
 /* Aplicando Roboto como fonte padrão */
 body {
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -20,31 +19,47 @@ body {
 }
 
 .form-section {
-    margin-bottom: 20px;
+    margin-top: auto;
+    padding: 12px;
 }
 
 .form-section form {
     display: flex;
     gap: 10px;
+    margin-bottom: 0;
+}
+
+input {
+    color: rgb(255, 255, 255);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.466);
 }
 
 .form-section input {
+    border: 0px;
     flex: 1;
     padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(75, 8, 66, 0.479);
 }
 
 .chat-section {
-    border: 1px solid #ccc;
     padding: 15px;
-    min-height: 300px;
+    height: 520px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    scroll-behavior: smooth;
 }
 
 .messages-container {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    min-height: 100%;
+    padding-bottom: 10px;
 }
 
 .message {
@@ -52,6 +67,11 @@ body {
     padding: 8px;
     border-radius: 5px;
     max-width: 70%;
+    word-wrap: break-word;
+    font-size: 14px; /* Adjust the font size as needed */
+    font-family: 'Roboto', sans-serif; /* Change the font family as needed */
+    font-weight: 600;
+    color:rgba(255, 255, 255, 0.774)
 }
 
 .message code {
@@ -73,20 +93,22 @@ body {
 }
 
 .bot-message {
-    background-color: #f0f0f0;
+    background-color: rgba(6, 31, 99, 0.637);
+    text-align: left;
     align-self: flex-start;
 }
 
 .user-message {
-    background-color: #e3f2fd;
+    background-color: rgba(136, 10, 119, 0.705);
+    text-align: right;
     align-self: flex-end;
 }
 
 /* Animação de "teclando" */
 #wave {
     position: relative;
-    background-color: #f0f0f0;
-    padding: 8px 15px;
+    background-color: rgba(6, 31, 99, 0.637);
+    padding: 5px 15px;
     border-radius: 5px;
     align-self: flex-start;
     margin: 5px 0;
@@ -96,11 +118,11 @@ body {
 
 .dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     margin-right: 3px;
-    background: #666;
+    background:rgba(255, 255, 255, 0.774);
     animation: wave 1.3s linear infinite;
 }
 
@@ -117,6 +139,6 @@ body {
         transform: initial;
     }
     30% {
-        transform: translateY(-7px);
+        transform: translateY(-8px);
     }
 } 

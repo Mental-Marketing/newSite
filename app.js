@@ -14,7 +14,7 @@ const PORT = 4682;
 const requiredEnvVars = ['BOTPRESS_CHAT_URL'];
 requiredEnvVars.forEach(varName => {
     if (!process.env[varName]) {
-        console.error(`Erro: Variável de ambiente ${varName} é requerida mas não é localizada`);
+        console.error(`Erro: Variável de ambiente ${varName} é requerida mas não foi localizada`);
         process.exit(1);
     }
 });
@@ -38,7 +38,7 @@ app.get('/', async (req, res) => {
 
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutos
-    max: 100 // limiata cada IP para 100 requisições duante os 10 minutos
+    max: 100 // limita cada IP em 100 requisições durante 10 minutos
 });
 
 app.use('/send-data', limiter);
