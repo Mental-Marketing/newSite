@@ -7,6 +7,16 @@ body {
     padding: 0;
 }
 
+.submit-image {
+    width: 10px; /* Adjust the size as needed */
+    height: auto;
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+.submit-image:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -102,6 +112,24 @@ input::placeholder {
     background-color: rgba(136, 10, 119, 0.705);
     text-align: right;
     align-self: flex-end;
+}
+
+.submit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.submit-button img {
+    width: 30px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    transition: opacity 0.3s ease;
+}
+
+.submit-button img:hover {
+    filter: hue-rotate(0deg) saturate(0%) brightness(100%);
+
 }
 
 /* Animação de "teclando" */
