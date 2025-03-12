@@ -166,23 +166,20 @@ body {
     font-size: 1.1em;
 }
 
-
 @media screen and (max-width: 500px) {
-    .chatContainer {
-      width: 100%;
-      min-width: unset;
-    }
-}
-
-@media screen and (max-width: 650px) {
-  .iframe-container-show , .iframe-container-hide {
-    max-height: 495px;
+  .description {
+    font-size: 1.1em;
+  }
+  
+  .chatContainer {
+    width: 100%;
+    min-width: unset;
   }
 }
 
-@media screen and (max-width: 440px) {
-  .iframe-container-show , .iframe-container-hide {
-    max-height: 450px;
+@media screen and (max-width: 390px) {
+  .description {
+    font-size: 0.85em;
   }
 }
 

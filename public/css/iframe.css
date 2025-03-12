@@ -12,7 +12,7 @@
 
 .chatContainer {
     position: fixed;
-    bottom: 100px; /* Increased to ensure it's above the button */
+    bottom: 60px; /* Increased to ensure it's above the button */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Offset by half width to truly center */
     width: 300px; /* Fixed width for chat container */
