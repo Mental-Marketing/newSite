@@ -17,11 +17,6 @@ body {
     opacity: 0.8; /* Reduce opacity on hover */
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
 .title-section {
     text-align: center;
