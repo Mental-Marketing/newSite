@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // console.log('DOMContentLoaded event fired'); 
-    console.log('localizations:', localizations);
+    // console.log('localizations:', localizations);
 
     const languageSelector = document.getElementById('languageSelector');
     if (languageSelector) {
