@@ -2,18 +2,34 @@
 <html lang="pt-BR">
 
 <head>
-    <%- include('../parciais/header') %>
+    <%- include('../parciais/header', { homeData: homeData }) %>
 </head>
 
 <body>
   <div class="container">
+        <!-- Dropdown para selecionar o idioma -->
+        <% if (localizations && localizations.length > 0) { %>
+          <select id="languageSelector">
+              <option value="pt-BR" selected>PT</option>
+              <% localizations.forEach(localization => { %>
+                  <option value="<%= localization.locale %>"><%= localization.locale.toUpperCase() %></option>
+              <% }) %>
+          </select>
+      <% } else { %>
+          <p>Nenhuma localização disponível.</p>
+      <% } %>
 
-    <img src="images/cropped_magenta.svg" 
-      alt="<%= homeData.data.attributes.tagLine %>" 
-      class="logo" />
+    <!-- Usar a variável logoMental -->
+    <% if (logoMental) { %>
+        <img src="<%= BASE_URL + logoMental %>" 
+          alt="<%= homeData.data.attributes.tagLine %>" 
+          class="logo" />
+    <% } else { %>
+        <p>Logo não disponível.</p>
+    <% } %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
     <p class="description">
-      Produtos digitais que agregam valor à <br> comunicação e aos negócios.
+      <%= homeData.data.attributes.catchFrase %>
     </p>
     
     <div class="chatContainer">
@@ -41,14 +57,23 @@
       <button onclick="toggleIframe()" class="collapse-button">
         <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
       </button>
-      <p class="email">Fale com nosso agente!</p>
+      <p class="email"><%= homeData.data.attributes.faleCom %></p>
 
     </div>
-
   </div>    
 </body>
 
+<!--
+<script>console.log('homeData carregadaço:', JSON.stringify(homeData, null, 2));</script>
+-->
+
+<script>
+  const homeData = <%- JSON.stringify(homeData.data.attributes) %>;
+  const localizations = <%- JSON.stringify(homeData.data.attributes.localizations.data) %>;
+</script>
+
 <script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>
+<script src="js/languageSwitcher.js"></script>
 
 </html>
