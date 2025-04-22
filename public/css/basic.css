@@ -168,6 +168,29 @@ body {
     font-size: 1.1em;
 }
 
+/* dropdown para selecionar o idioma */
+#languageSelector {
+  background: transparent;
+  border: 1px solid #bc66bc;
+  color: #bc66bc;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  padding: 6px 12px;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 18px;
+  margin-top: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+#languageSelector option {
+  background: transparent;
+  font-family: 'Noto Sans', sans-serif;
+}
+
 @media screen and (max-width: 500px) {
   .description {
     font-size: 1.1em;
