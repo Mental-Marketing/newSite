@@ -1,1 +1,4 @@
-BOTPRESS_CHAT_URL=https://chat.botpress.cloud/your_chat-webhook-number
+TESTE_ENV=
+BOTPRESS_API_URL=
+BOTPRESS_CHAT_URL=
+WEBHOOK_ID=
