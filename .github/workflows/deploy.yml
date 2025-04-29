@@ -19,6 +19,8 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          script_timeout: 30s
+          debug: true
 
       - name: Deploy to Server
         run: |
