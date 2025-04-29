@@ -21,11 +21,15 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to Server
-        run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script_timeout: 30s
+          script: |
             cd /home/webmaster/apps/newSite
             git pull origin main
             npm install
-            # npm run build  # Descomente se necessário
+            # npm run build
             pm2 restart homePage
-          EOF
