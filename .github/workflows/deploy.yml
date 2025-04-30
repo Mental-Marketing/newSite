@@ -28,7 +28,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_timeout: 30s
           script: |
-            cd /home/webmaster/apps/newSite
+            cd /home/webmaster/apps/devdevdev/newSite
             git pull origin main
             npm install
             # npm run build
