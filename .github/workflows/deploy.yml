@@ -32,4 +32,4 @@ jobs:
             git pull origin main
             npm install
             # npm run build
-            pm2 restart homePage
+            pm2 restart newSite
