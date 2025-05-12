@@ -19,6 +19,10 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          echo "=== DEBUG: Mostrando chave SSH ==="
+          head -n 3 ~/.ssh/id_ed25519
+          echo "=== DEBUG: Teste de conexão ==="
+          ssh -i ~/.ssh/id_ed25519 -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'Conexão SSH bem-sucedida!'"
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1
@@ -28,8 +32,20 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_timeout: 30s
           script: |
-            cd /home/webmaster/apps/newSite
+            echo "=== INÍCIO DO DEPLOY ==="
+            echo "Diretório atual: $(pwd)"
+            echo "Usuário: $(whoami)"
+            
+            cd /home/webmaster/apps/devdevdev/newSite
+            echo "Branch atual antes do pull:"
+            git branch -v
+            
             git pull origin main
+            echo "Status após pull:"
+            git status
+            
             npm install
             # npm run build
-            pm2 restart homePage
+            pm2 restart newSite
+            
+            echo "=== DEPLOY FINALIZADO ==="
