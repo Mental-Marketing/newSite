@@ -32,6 +32,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_timeout: 30s
           script: |
+<<<<<<< HEAD
             echo "=== INÍCIO DO DEPLOY ==="
             echo "Diretório atual: $(pwd)"
             echo "Usuário: $(whoami)"
@@ -40,6 +41,9 @@ jobs:
             echo "Branch atual antes do pull:"
             git branch -v
             
+=======
+            cd /home/webmaster/apps/devdevdev/newSite
+>>>>>>> ec9031c28c59c158a85718274e6801481a10cc8e
             git pull origin main
             echo "Status após pull:"
             git status
@@ -47,5 +51,8 @@ jobs:
             npm install
             # npm run build
             pm2 restart newSite
+<<<<<<< HEAD
             
             echo "=== DEPLOY FINALIZADO ==="
+=======
+>>>>>>> ec9031c28c59c158a85718274e6801481a10cc8e

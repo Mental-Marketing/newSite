@@ -1,4 +1,4 @@
-TESTE_ENV=
+TESTE_ENV=Variáveis de ambiente carregadas.
 BOTPRESS_API_URL=
 BOTPRESS_CHAT_URL=
 WEBHOOK_ID=
