@@ -39,15 +39,15 @@ app.use('/', sendDataRouter);
 
 app.get('/', async (req, res) => {
     try {
-        const response = await axios.get(`${BASE_URL}/api/home-page?populate=deep`);
+        const response = await axios.get(`${BASE_URL}/api/home-page?populate=*`);
         
         const homeData = response.data;
         // console.log('Home Data:', JSON.stringify(homeData, null, 2));
 
-        const logoMental = homeData.data.attributes.logoMental.data[0].attributes.url;
+        const logoMental = homeData.data.logoMental.url;
         // console.log(logoMental);
 
-        const localizations = homeData.data.attributes.localizations.data.map(localization => localization.attributes);
+        const localizations = homeData.data.localizations.map(localization => localization);
         // console.log('Localizations:', JSON.stringify(localizations, null, 2));
 
         res.render('pages/index', { 

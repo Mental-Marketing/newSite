@@ -13,7 +13,7 @@
           <select id="languageSelector">
               <option value="pt-BR" selected>PT</option>
               <% localizations.forEach(localization => { %>
-                  <option value="<%= localization.locale %>"><%= localization.locale.toUpperCase() %></option>
+                  <option value="<%= localization.locale %>"><%= localization.locale.split('-')[0].toUpperCase() %></option>
               <% }) %>
           </select>
       <% } else { %>
@@ -23,14 +23,14 @@
     <!-- Usar a variável logoMental -->
     <% if (logoMental) { %>
         <img src="<%= BASE_URL + logoMental %>" 
-          alt="<%= homeData.data.attributes.tagLine %>" 
+          alt="<%= homeData.data.tagLine %>" 
           class="logo" />
     <% } else { %>
         <p>Logo não disponível.</p>
     <% } %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
     <p class="description">
-      <%= homeData.data.attributes.catchFrase %>
+      <%= homeData.data.catchFrase %>
     </p>
     
     <div class="chatContainer">
@@ -58,7 +58,7 @@
       <button onclick="toggleIframe()" class="collapse-button">
         <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
       </button>
-      <p class="email"><%= homeData.data.attributes.faleCom %></p>
+      <p class="email"><%= homeData.data.faleCom %></p>
 
     </div>
   </div>    
@@ -67,11 +67,6 @@
 <!--
 <script>console.log('homeData carregadaço:', JSON.stringify(homeData, null, 2));</script>
 -->
-
-<script>
-  const homeData = <%- JSON.stringify(homeData.data.attributes) %>;
-  const localizations = <%- JSON.stringify(homeData.data.attributes.localizations.data) %>;
-</script>
 
 <script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>

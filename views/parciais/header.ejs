@@ -8,10 +8,15 @@
   gtag('config', 'G-DXMWER4V83');
 </script>
 
+<script>
+  const homeData = <%- JSON.stringify(homeData) %>;
+  const localizations = <%- JSON.stringify(homeData.data.localizations) %>;
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><%= homeData.data.attributes.tagLine %></title>
+<title><%= homeData.data.tagLine %></title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

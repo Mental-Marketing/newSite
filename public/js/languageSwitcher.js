@@ -19,17 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedLocale = this.value;
             if (selectedLocale === "pt-BR") {
                 // Usar textos originais do homeData
-                document.querySelector('.logo').alt = homeData.tagLine;
-                document.querySelector('.description').textContent = homeData.catchFrase;
-                document.querySelector('.email').textContent = homeData.faleCom;
+                document.querySelector('.logo').alt = homeData.data.tagLine;
+                document.querySelector('.description').textContent = homeData.data.catchFrase;
+                document.querySelector('.email').textContent = homeData.data.faleCom;
             } else {
                 const selectedLocalization = localizations.find(
-                    loc => loc.attributes && loc.attributes.locale === selectedLocale
+                    loc => loc.locale === selectedLocale
                 );
-                if (selectedLocalization && selectedLocalization.attributes) {
-                    document.querySelector('.logo').alt = selectedLocalization.attributes.tagLine;
-                    document.querySelector('.description').textContent = selectedLocalization.attributes.catchFrase;
-                    document.querySelector('.email').textContent = selectedLocalization.attributes.faleCom;
+                if (selectedLocalization) {
+                    document.querySelector('.logo').alt = selectedLocalization.tagLine;
+                    document.querySelector('.description').textContent = selectedLocalization.catchFrase;
+                    document.querySelector('.email').textContent = selectedLocalization.faleCom;
                 }
             }
         });
