@@ -65,5 +65,3 @@ app.get('/', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
-
-// Our show must go on
