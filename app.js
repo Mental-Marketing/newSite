@@ -23,8 +23,8 @@ requiredEnvVars.forEach(varName => {
 const BASE_URL = 'https://mentalmarketing.com.br/strapi';
 
 const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 minutos
-    max: 100 // limita cada IP em 100 requisições durante 10 minutos
+    windowMs: 10 * 60 * 1000, 
+    max: 100 
 });
 
 const sendDataRouter = require('./routes/sendData');

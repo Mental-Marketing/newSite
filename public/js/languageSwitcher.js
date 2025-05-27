@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         languageSelector.addEventListener('change', function() {
             const selectedLocale = this.value;
             if (selectedLocale === "pt-BR") {
-                // Usar textos originais do homeData
+                document.title = homeData.data.tagLine;
                 document.querySelector('.logo').alt = homeData.data.tagLine;
                 document.querySelector('.description').textContent = homeData.data.catchFrase;
                 document.querySelector('.email').textContent = homeData.data.faleCom;
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     loc => loc.locale === selectedLocale
                 );
                 if (selectedLocalization) {
+                    document.title = selectedLocalization.tagLine;
                     document.querySelector('.logo').alt = selectedLocalization.tagLine;
                     document.querySelector('.description').textContent = selectedLocalization.catchFrase;
                     document.querySelector('.email').textContent = selectedLocalization.faleCom;

@@ -5,10 +5,10 @@
     <%- include('../parciais/header', { homeData: homeData }) %>
 </head>
 
-<!-- Com actions -->
 <body>
   <div class="container">
-        <!-- Dropdown para selecionar o idioma -->
+
+    <div class="langSelector">
         <% if (localizations && localizations.length > 0) { %>
           <select id="languageSelector">
               <option value="pt-BR" selected>PT</option>
@@ -19,8 +19,9 @@
       <% } else { %>
           <p>Nenhuma localização disponível.</p>
       <% } %>
+    </div>
 
-    <!-- Usar a variável logoMental -->
+
     <% if (logoMental) { %>
         <img src="<%= BASE_URL + logoMental %>" 
           alt="<%= homeData.data.tagLine %>" 
@@ -32,7 +33,8 @@
     <p class="description">
       <%= homeData.data.catchFrase %>
     </p>
-    
+
+
     <div class="chatContainer">
 
       <div class="iframe-panel">
@@ -61,12 +63,9 @@
       <p class="email"><%= homeData.data.faleCom %></p>
 
     </div>
+
   </div>    
 </body>
-
-<!--
-<script>console.log('homeData carregadaço:', JSON.stringify(homeData, null, 2));</script>
--->
 
 <script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>
