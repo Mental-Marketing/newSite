@@ -34,7 +34,15 @@
     </p>
 
     <div class="numbahs">
-      <!-- numbahs --> 
+      <!-- numbahs vão aqui --> 
+       <div class="numbah_geral_txt"><%= homeData.data.geralNumbahs %></div>
+       <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
+       <div class="numbah_motion_txt"><%= homeData.data.totalHTML_txt %></div>
+       <div class="numbah_email"><%= homeData.data.totalEmails %></div>
+       <div class="numbah_email_txt"><%= homeData.data.totalEmails_txt %></div>
+       <div class="numbah_lp"><%= homeData.data.totalLanding %></div>
+       <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
+       <div class="closeFrase"><%= homeData.data.closeFrase %></div>
     </div>
 
     <div class="chatContainer">
@@ -69,8 +77,10 @@
   </div>    
 </body>
 
+<script src="/js/countUp.js"></script>
 <script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>
 <script src="js/languageSwitcher.js"></script>
+<script src="js/countup.js"></script>
 
 </html>
