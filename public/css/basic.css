@@ -163,9 +163,12 @@ body {
 }
 
 /* E-mail */
-.email {
-    color: #bc66bc;
+.faleCom {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 900;
     font-size: 1.1em;
+    color: #bc66bc;
+    text-align: center;
 }
 
 /* dropdown para selecionar o idioma */

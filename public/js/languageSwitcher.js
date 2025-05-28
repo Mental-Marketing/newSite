@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Função para reiniciar as animações
     function reiniciarAnimacoes() {
         const motionElement = document.querySelector('.numbah_motion');
         const emailElement = document.querySelector('.numbah_email');
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     countUp.start();
                 }
             } catch (error) {
-                // Silenciosamente ignora erros
             }
         }
 
@@ -74,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.title = homeData.data.tagLine;
                 document.querySelector('.logo').alt = homeData.data.tagLine;
                 document.querySelector('.description').textContent = homeData.data.catchFrase;
-                document.querySelector('.email').textContent = homeData.data.faleCom;
+                document.querySelector('.faleCom').textContent = homeData.data.faleCom;
 
                 document.querySelector('.numbah_geral_txt').textContent = homeData.data.geralNumbahs;
 
@@ -97,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.title = selectedLocalization.tagLine;
                     document.querySelector('.logo').alt = selectedLocalization.tagLine;
                     document.querySelector('.description').textContent = selectedLocalization.catchFrase;
-                    document.querySelector('.email').textContent = selectedLocalization.faleCom;
+                    document.querySelector('.faleCom').textContent = selectedLocalization.faleCom;
 
                     document.querySelector('.numbah_geral_txt').textContent = selectedLocalization.geralNumbahs;
 
@@ -111,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Reinicia as animações após a mudança de idioma
             setTimeout(reiniciarAnimacoes, 100);
         });
         
