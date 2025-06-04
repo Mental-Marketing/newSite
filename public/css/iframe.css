@@ -23,7 +23,7 @@
 .iframe-panel {
     background: rgba(255, 19, 196, 0.747);
     border-radius: 10px;
-    margin-bottom: 110px; /* Add space between panel and button */    
+    margin-bottom: -10px; /* Add space between panel and button */    
 }
 
 .iframe-container-hidden {
@@ -40,7 +40,7 @@
 }
 
 @media screen and (min-width: 2020px) {
-    .chatContainer {
+    /* .chatContainer {
       bottom: 160px;
-    }
+    } */
   }

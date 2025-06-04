@@ -35,17 +35,29 @@
 
     <div class="numbahs">
        <div class="numbah_geral_txt"><%= homeData.data.geralNumbahs %></div>
-       <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
-       <div class="numbah_motion_txt"><%= homeData.data.totalHTML_txt %></div>
-       <div class="numbah_email"><%= homeData.data.totalEmails %></div>
-       <div class="numbah_email_txt"><%= homeData.data.totalEmails_txt %></div>
-       <div class="numbah_lp"><%= homeData.data.totalLanding %></div>
-       <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
+       <div class="numbah_display_container">
+         <div class="numbah_display_item">
+           <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
+           <div class="numbah_motion_txt"><%= homeData.data.totalHTML_txt %></div>
+         </div>
+         <div class="numbah_display_item">
+            <div class="numbah_email"><%= homeData.data.totalEmails %></div>
+            <div class="numbah_email_txt"><%= homeData.data.totalEmails_txt %></div>
+         </div>
+         <div class="numbah_display_item">
+            <div class="numbah_lp"><%= homeData.data.totalLanding %></div>
+            <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
+         </div>
+       </div>
        <div class="closeFrase"><%= homeData.data.closeFrase %></div>
     </div>
 
-    <div class="chatContainer">
+    <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
+    <p class="description">
+      <%= homeData.data.catchFrase %>
+    </p>
 
+    <div class="chatContainer">
       <div class="iframe-panel">
         <div id="iframeContainer" class="iframe-container-hidden">
           <div id="iframeFlutuante" class="iframeFlutuante">
@@ -64,13 +76,12 @@
           </div>
         </div>
       </div>
-
-      <button onclick="toggleIframe()" class="collapse-button">
-        <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
-      </button>
-      <p class="faleCom"><%= homeData.data.faleCom %></p>
-
     </div>
+
+    <button onclick="toggleIframe()" class="collapse-button">
+        <p class="faleCom"><%= homeData.data.faleCom %></p>
+        <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
+    </button>
 
   </div>    
 </body>
