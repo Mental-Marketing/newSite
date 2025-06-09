@@ -38,7 +38,7 @@ body {
 
 /* Container principau */
 .container {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Fira Sans','Noto Sans', sans-serif;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -64,6 +64,15 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px auto 0; /* Alinha o botão centralizado */
+    border-top: 1px solid #ffd103;
+    color: #1d003d;
+}
+
+.collapse-button:hover .faleCom {
+  color: #ffd103;
+}
+.collapse-button:hover .button-icon {
+  filter: saturate(90) hue-rotate(120deg) brightness(270%);
 }
 
 .chatContainer {
@@ -170,10 +179,9 @@ body {
 
 /* E-mail */
 .faleCom {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Fira Sans','Noto Sans', sans-serif;
     font-weight: 900;
     font-size: 1.1em;
-    color: #1d003d;
     text-align: center;
 }
 
@@ -205,22 +213,30 @@ body {
 }
 
 .numbahs {
-  color: #ffd103;
+  color: #ffab29f0;
   font-size: 1.4em;
+}
+
+.numbah_geral_txt {
+  max-width: 800px;
+  margin: auto;
 }
 
 .numbah_display_container {
     display: flex;
     flex-direction: column;
     margin: 20px auto;
+    align-items: center;
 }
 
 .numbah_display_item {
     margin: 0 0 20px;
+    width: 211px;
 }
 
 .numbah_motion,.numbah_email,.numbah_lp {
-  font-size: 3em;
+  font-family: 'Fira Sans Condensed';
+  font-size: 5em;
 }
 
 @media screen and (max-width: 500px) {
@@ -256,6 +272,8 @@ body {
   .numbah_display_container {
     flex-direction: row;
     justify-content: space-around;
+    max-width: 1500px !important;
+    width: 100vw;
   }
 
   .numbah_display_item {
@@ -274,4 +292,13 @@ body {
   .iframe-container {
     height: 394px;
   }
+
+  .numbah_display_item {
+    width: 500px;
+  } 
+
+  .numbah_motion,.numbah_email,.numbah_lp {
+    font-size: 7em;
+  }
+
 }

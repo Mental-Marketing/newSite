@@ -29,12 +29,12 @@
         <p>Logo não disponível.</p>
     <% } %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
-    <p class="description">
+    <p class="description breakText">
       <%= homeData.data.catchFrase %>
     </p>
 
     <div class="numbahs">
-       <div class="numbah_geral_txt"><%= homeData.data.geralNumbahs %></div>
+       <div class="numbah_geral_txt breakText"><%= homeData.data.geralNumbahs %></div>
        <div class="numbah_display_container">
          <div class="numbah_display_item">
            <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
@@ -49,12 +49,11 @@
             <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
          </div>
        </div>
-       <div class="closeFrase"><%= homeData.data.closeFrase %></div>
     </div>
 
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
-    <p class="description">
-      <%= homeData.data.catchFrase %>
+    <p class="description breakText">
+      <%= homeData.data.closeFrase %>
     </p>
 
     <div class="chatContainer">
@@ -91,5 +90,6 @@
 <script src="js/toggleIframe.js"></script>
 <script src="js/languageSwitcher.js"></script>
 <script src="js/countup.js"></script>
+<script src="js/breakText.js"></script>
 
 </html>
