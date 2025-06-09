@@ -215,6 +215,7 @@ body {
 .numbahs {
   color: #ffab29f0;
   font-size: 1.4em;
+  margin: 30px 0;
 }
 
 .numbahs .line {
@@ -248,6 +249,10 @@ body {
   .description,.numbahs {
     font-size: 1.1em;
   }
+
+  .numbahs .line{
+    font-size: 0.91em;
+  }
   
   .chatContainer {
     width: 100%;
@@ -258,6 +263,10 @@ body {
 @media screen and (max-width: 390px) {
   .description,.numbahs {
     font-size: 0.85em;
+  }
+
+  .numbahs .line{
+    font-size: 1.177em;
   }
 }
 
