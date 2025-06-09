@@ -217,9 +217,14 @@ body {
   font-size: 1.4em;
 }
 
+.numbahs .line {
+  color: #ffab29f0;
+  font-size: 0.71em;
+}
+
 .numbah_geral_txt {
   max-width: 800px;
-  margin: auto;
+  margin: 15px auto;
 }
 
 .numbah_display_container {
@@ -272,7 +277,7 @@ body {
   .numbah_display_container {
     flex-direction: row;
     justify-content: space-around;
-    max-width: 1500px !important;
+    max-width: 1000px !important;
     width: 100vw;
   }
 
