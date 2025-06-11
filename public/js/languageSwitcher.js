@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 document.querySelector('.closeFrase').textContent = homeData.data.closeFrase;
 
+                breakText();
+
             } else {
                 const selectedLocalization = localizations.find(
                     loc => loc.locale === selectedLocale
@@ -106,11 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('.numbah_lp_txt').textContent = selectedLocalization.totalLanding_txt;
 
                     document.querySelector('.closeFrase').textContent = selectedLocalization.closeFrase;
+
+                    if(selectedLocalization.locale !== 'zh-Hans') {
+                        breakText();                        
+                    }
                 }
             }
 
             setTimeout(reiniciarAnimacoes, 100);
-            breakText();
         });
         
     } else {
