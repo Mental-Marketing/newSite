@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.numbah_lp').textContent = homeData.data.totalLanding;
                 document.querySelector('.numbah_lp_txt').textContent = homeData.data.totalLanding_txt;
 
-                document.querySelector('.closeFrase').textContent = homeData.data.closeFrase;
+                //document.querySelector('.closeFrase').textContent = homeData.data.closeFrase;
 
             } else {
                 const selectedLocalization = localizations.find(
@@ -105,11 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     document.querySelector('.numbah_lp_txt').textContent = selectedLocalization.totalLanding_txt;
 
-                    document.querySelector('.closeFrase').textContent = selectedLocalization.closeFrase;
+                    //document.querySelector('.closeFrase').textContent = selectedLocalization.closeFrase;
                 }
             }
 
             setTimeout(reiniciarAnimacoes, 100);
+            breakText();
         });
         
     } else {
