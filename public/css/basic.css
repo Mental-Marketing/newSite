@@ -48,7 +48,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 90px;
 }
 
 /* Botão */
@@ -83,9 +83,10 @@ body {
 
 /* Imagem do botão */
 .button-icon {
-    width: 20px;
+    width: 35px;
     height: auto;
     margin-left: 8px;
+    margin-bottom: 8px;
     filter: saturate(40) hue-rotate(296deg) brightness(0.2);
 }
 
@@ -181,7 +182,7 @@ body {
 .faleCom {
     font-family: 'Fira Sans','Noto Sans', sans-serif;
     font-weight: 900;
-    font-size: 1.1em;
+    font-size: 1.5em;
     text-align: center;
 }
 
@@ -300,7 +301,6 @@ body {
     padding: 200px 20px 20px;
   }
   #languageSelector {
-    top: 169px;
     left: 58%;
   }
   .iframe-container {
