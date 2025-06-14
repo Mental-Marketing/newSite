@@ -15,7 +15,7 @@ const PORT = 4682;
 const requiredEnvVars = ['BOTPRESS_CHAT_URL'];
 requiredEnvVars.forEach(varName => {
     if (!process.env[varName]) {
-        console.error(`Erro: Variável de ambiente ${varName} é requerida mas não foi localizada`);
+        console.error(`Erro: Variável de ambiente ${varName} é requerida mas não foi localizada.`);
         process.exit(1);
     }
 });
@@ -28,6 +28,7 @@ const limiter = rateLimit({
 });
 
 const sendDataRouter = require('./routes/sendData');
+
 app.set('trust proxy', 1);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -55,10 +56,10 @@ app.get('/', async (req, res) => {
         });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error ao obter dados');
+        res.status(500).send('Error ao obter dados.');
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}.`);
 });

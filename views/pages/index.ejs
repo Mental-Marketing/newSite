@@ -21,13 +21,15 @@
       <% } %>
     </div>
 
-    <% if (logoMental) { %>
+    <% 
+      if (logoMental) { %>
         <img src="<%= BASE_URL + logoMental %>" 
-          alt="<%= homeData.data.tagLine %>" 
-          class="logo" />
-    <% } else { %>
+        alt="<%= homeData.data.tagLine %>" 
+        class="logo" />
+      <% } else { %>
         <p>Logo não disponível.</p>
-    <% } %>
+      <% } 
+    %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
     <p class="description breakText">
       <%= homeData.data.catchFrase %>

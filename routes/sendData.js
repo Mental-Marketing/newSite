@@ -64,7 +64,7 @@ async function getBotResponse(conversationId, userKey) {
     const response = await axios.get(`${BOTPRESS_CHAT_URL}/conversations/${conversationId}/messages`, { headers: { 'x-user-key': userKey } });
     const messages = response.data.messages;
     
-    console.log('Todas as menssagens até agora:', JSON.stringify(messages, null, 2));
+    // console.log('Todas as mensagens até agora:', JSON.stringify(messages, null, 2));
     
     const botMessages = messages
       .filter(m => m.userId.startsWith('user_'))
@@ -86,7 +86,7 @@ async function getBotResponse(conversationId, userKey) {
       return processedMessages;
     }
     
-    console.log('No new bot messages found');
+    console.log('Sem novas mensagens do bot.');
     return null;
   } catch (error) {
     console.error('Erro ao obter resposta do bot:', error);
@@ -114,7 +114,7 @@ async function getBotResponseWithRetry(conversationId, userKey) {
                 hasReceivedResponse = true;
                 return response;
             }
-            console.log('Sem resposta nova ainda, tentarei novamente');
+            console.log('Sem resposta nova ainda, tentarei novamente.');
         } catch (error) {
             console.error(`Tentativa ${i + 1} falhou:`, error);
             lastError = error;
@@ -123,7 +123,7 @@ async function getBotResponseWithRetry(conversationId, userKey) {
     
     if (!hasReceivedResponse) {
         console.error('Todas as tentivas falharam:', lastError);
-        return "Desculpe, não obtive resposta do bot no momento";
+        return "Desculpe, não obtive resposta do bot no momento.";
     }
     
     return null;
@@ -151,7 +151,7 @@ router.post('/send-data', async (req, res) => {
     }
 
     if (!texto || !texto.trim()) {
-      return res.status(400).json({ error: 'O campo de mensagem não pode estar vazio' });
+      return res.status(400).json({ error: 'O campo de mensagem não pode estar vazio.' });
     }
 
     await createMessage(conversationId, userKey, texto);
@@ -170,16 +170,16 @@ router.post('/send-data', async (req, res) => {
     console.error('Erro ao processar as requisições:', error);
     if (error.response) {
       res.status(error.response.status).json({ 
-        error: 'Erro na comunicação com a Botpress CLoud',
+        error: 'Erro na comunicação com a Botpress CLoud.',
         details: error.response.data 
       });
     } else if (error.request) {
       res.status(503).json({ 
-        error: 'Serviço Botpress indisponível' 
+        error: 'Serviço Botpress indisponível.' 
       });
     } else {
       res.status(500).json({ 
-        error: 'Erro interno do servidor',
+        error: 'Erro interno do servidor.',
         message: error.message 
       });
     }
