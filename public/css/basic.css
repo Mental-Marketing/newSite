@@ -53,7 +53,7 @@ body {
 
 /* Botão */
 .collapse-button {
-    background: #ff097c;
+    background: rgb(255, 3, 116);
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -66,6 +66,7 @@ body {
     margin: 10px auto 0; /* Alinha o botão centralizado */
     border-top: 1px solid #ffd103;
     color: #1d003d;
+    z-index: 2;
 }
 
 .collapse-button:hover .faleCom {
@@ -244,6 +245,47 @@ body {
 .numbah_motion,.numbah_email,.numbah_lp {
   font-family: 'Fira Sans Condensed';
   font-size: 5em;
+}
+
+.slider_section {
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+}
+.multiple-items {
+  width: 100%;
+  display: flex;
+}
+
+.brand {
+  width: 200px;
+}
+
+.brand_img {
+  width: 100%;
+  opacity: 0.7;
+}
+
+.imgBlur-left, .imgBlur-right {
+  width: 33%;
+  height: 105px;
+  top: -10px;
+  position: absolute;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.imgBlur-left{
+  mask-image: linear-gradient(to right, black, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, black, black, transparent);
+  left: 0;
+
+}
+.imgBlur-right {
+  mask-image: linear-gradient(to left, black, black, transparent);
+  -webkit-mask-image: linear-gradient(to left, black, black, transparent);
+  right: 0;
 }
 
 @media screen and (max-width: 500px) {
