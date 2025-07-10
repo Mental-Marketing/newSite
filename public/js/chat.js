@@ -1,26 +1,21 @@
-// public/js/chat.js
 document.addEventListener("DOMContentLoaded", function() {
     if (performance.navigation.type === 1) {
         localStorage.clear();
-        // console.log('O localStorage foi limpo');
     }
 
     const form = document.querySelector("form");
     const submitButton = form.querySelector("button[type=submit]");
     const messagesContainer = document.querySelector(".messages-container");
-
-    // Function to add message to chat
     function addMessage(text, isBot) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
         if (isBot) {
-            messageDiv.innerHTML = text; // Usanddo innerHTML para as menssagens do robô (markdown/HTML)
+            messageDiv.innerHTML = text; 
         } else {
-            messageDiv.textContent = text; // Usand textContent para as mensagens do usuário (texto simples)
+            messageDiv.textContent = text; 
         }
         messagesContainer.appendChild(messageDiv);
         
-        // Scroll to bottom
         messageDiv.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -36,17 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showTypingIndicator() {
-        // Remove outras indicações de "teclando"
         const existingIndicator = document.getElementById('wave');
         if (existingIndicator) {
             existingIndicator.remove();
         }
 
-        // Cria e insere novo indicador
         const typingIndicator = createTypingIndicator();
         messagesContainer.appendChild(typingIndicator);
         
-        // Aparece e scrolla
         typingIndicator.style.display = 'block';
         typingIndicator.scrollIntoView({ behavior: 'smooth' });
     }
@@ -61,19 +53,12 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        // Remove the following lines to keep the button enabled and text unchanged
-        // submitButton.disabled = true;
-        // submitButton.innerHTML = 'Enviando...';
-        
         const textUser = document.getElementById('textUser').value;
         
-        // Add user message to chat
         addMessage(textUser, false);
         
-        // Clear input field
         document.getElementById('textUser').value = '';
         
-        // Show typing indicator
         showTypingIndicator();
         
         const existingUserKey = localStorage.getItem('userKey');
@@ -99,18 +84,13 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            //console.log("Dados recebidos:", data);
-            
-            // Hide typing indicator
             hideTypingIndicator();
-            
-            // Handle multiple bot messages
+
             if (Array.isArray(data.respostaBot)) {
                 data.respostaBot.forEach(message => {
                     addMessage(message, true);
                 });
             } else if (data.respostaBot) {
-                // Handle single message for backward compatibility
                 addMessage(data.respostaBot, true);
             }
             
@@ -125,11 +105,6 @@ document.addEventListener("DOMContentLoaded", function() {
             hideTypingIndicator();
             console.error("Erro ao enviar mensagem:", error);
             alert(`Erro ao enviar mensagem: ${error.message}`);
-        })
-        .finally(() => {
-            // Remove the following lines to keep the button enabled and text unchanged
-            // submitButton.disabled = false;
-            // submitButton.innerHTML = 'Enviar';
         });
     });
 });

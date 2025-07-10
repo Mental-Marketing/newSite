@@ -38,7 +38,7 @@ body {
 
 /* Container principau */
 .container {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Fira Sans','Noto Sans', sans-serif;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -48,11 +48,15 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    padding-bottom: 90px;
 }
 
 /* Botão */
 .collapse-button {
-    background: none;
+    background: rgb(255, 3, 116);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -60,6 +64,16 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px auto 0; /* Alinha o botão centralizado */
+    border-top: 1px solid #ffd103;
+    color: #1d003d;
+    z-index: 2;
+}
+
+.collapse-button:hover .faleCom {
+  color: #ffd103;
+}
+.collapse-button:hover .button-icon {
+  filter: saturate(90) hue-rotate(120deg) brightness(270%);
 }
 
 .chatContainer {
@@ -70,8 +84,11 @@ body {
 
 /* Imagem do botão */
 .button-icon {
-    width: 38px;
+    width: 35px;
     height: auto;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    filter: saturate(40) hue-rotate(296deg) brightness(0.2);
 }
 
 
@@ -163,19 +180,25 @@ body {
 }
 
 /* E-mail */
-.email {
-    color: #bc66bc;
-    font-size: 1.1em;
+.faleCom {
+    font-family: 'Fira Sans','Noto Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 /* dropdown para selecionar o idioma */
 #languageSelector {
+  position: fixed;
+  top: 0px;
+  left: 80%;
+
   background: transparent;
   border: 1px solid #bc66bc;
   color: #bc66bc;
   font-family: 'Noto Sans', sans-serif;
   font-size: 1em;
-  padding: 6px 12px;
+  padding: 2px 9px;
   border-radius: 4px;
   outline: none;
   margin-bottom: 18px;
@@ -191,9 +214,93 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.numbahs {
+  color: #ffab29f0;
+  font-size: 1.4em;
+  margin: 30px 0;
+}
+
+.numbahs .line {
+  color: #ffab29f0;
+  font-size: 0.71em;
+}
+
+.numbah_geral_txt {
+  max-width: 800px;
+  margin: 15px auto;
+}
+
+.numbah_display_container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    align-items: center;
+}
+
+.numbah_display_item {
+    margin: 0 0 20px;
+    width: 211px;
+}
+
+.numbah_motion,.numbah_email,.numbah_lp {
+  font-family: 'Fira Sans Condensed';
+  font-size: 5em;
+}
+
+.slider_section {
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+}
+.multiple-items {
+  width: 100%;
+  display: flex;
+}
+
+.brand {
+  width: 200px;
+}
+
+.brand_img {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.slick-current img {
+  opacity: 0.7;
+  transition: 1s;
+}
+
+.imgBlur-left, .imgBlur-right {
+  width: 33%;
+  height: 105px;
+  top: -10px;
+  position: absolute;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.imgBlur-left{
+  mask-image: linear-gradient(to right, black, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, black, black, transparent);
+  left: 0;
+
+}
+.imgBlur-right {
+  mask-image: linear-gradient(to left, black, black, transparent);
+  -webkit-mask-image: linear-gradient(to left, black, black, transparent);
+  right: 0;
+}
+
 @media screen and (max-width: 500px) {
-  .description {
+  .description,.numbahs {
     font-size: 1.1em;
+  }
+
+  .numbahs .line{
+    font-size: 0.91em;
   }
   
   .chatContainer {
@@ -203,8 +310,12 @@ body {
 }
 
 @media screen and (max-width: 390px) {
-  .description {
+  .description,.numbahs {
     font-size: 0.85em;
+  }
+
+  .numbahs .line{
+    font-size: 1.177em;
   }
 }
 
@@ -220,13 +331,36 @@ body {
   .iframe-container {
     height: 394px;
   }
+
+  .numbah_display_container {
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 1000px !important;
+    width: 100vw;
+  }
+
+  .numbah_display_item {
+    margin: 0;
+  }
 }
 
 @media screen and (min-width: 2020px) {
   .container {
     padding: 200px 20px 20px;
   }
+  #languageSelector {
+    left: 58%;
+  }
   .iframe-container {
     height: 394px;
   }
+
+  .numbah_display_item {
+    width: 500px;
+  } 
+
+  .numbah_motion,.numbah_email,.numbah_lp {
+    font-size: 7em;
+  }
+
 }

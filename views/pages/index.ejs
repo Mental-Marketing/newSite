@@ -21,31 +21,58 @@
       <% } %>
     </div>
 
-    <% if (logoMental) { %>
+    <% 
+      if (logoMental) { %>
         <img src="<%= BASE_URL + logoMental %>" 
-          alt="<%= homeData.data.tagLine %>" 
-          class="logo" />
-    <% } else { %>
+        alt="<%= homeData.data.tagLine %>" 
+        class="logo" />
+      <% } else { %>
         <p>Logo não disponível.</p>
-    <% } %>
+      <% } 
+    %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
-    <p class="description">
+    <p class="description breakText">
       <%= homeData.data.catchFrase %>
     </p>
 
     <div class="numbahs">
-      <!-- numbahs --> 
+      <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
+      <div class="numbah_geral_txt breakText"><%= homeData.data.geralNumbahs %></div>
+      <div class="numbah_display_container">
+        <div class="numbah_display_item">
+          <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
+          <div class="numbah_motion_txt"><%= homeData.data.totalHTML_txt %></div>
+        </div>
+        <div class="numbah_display_item">
+          <div class="numbah_email"><%= homeData.data.totalEmails %></div>
+          <div class="numbah_email_txt"><%= homeData.data.totalEmails_txt %></div>
+        </div>
+        <div class="numbah_display_item">
+          <div class="numbah_lp"><%= homeData.data.totalLanding %></div>
+          <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
+    <p class="description breakText closeFrase">
+      <%= homeData.data.closeFrase %>
+    </p>
+
+    <div class="slider_section">
+      <div class="imgBlur-left"></div>
+      <div class="imgBlur-right"></div>
+      <div class="multiple-items">        
+      </div>
     </div>
 
     <div class="chatContainer">
-
       <div class="iframe-panel">
         <div id="iframeContainer" class="iframe-container-hidden">
           <div id="iframeFlutuante" class="iframeFlutuante">
             
             <div class="chat-section">
               <div class="messages-container">
-                <!-- as mensagens aparecem aqui -->
               </div>
             </div>
       
@@ -58,19 +85,21 @@
           </div>
         </div>
       </div>
-
-      <button onclick="toggleIframe()" class="collapse-button">
-        <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
-      </button>
-      <p class="email"><%= homeData.data.faleCom %></p>
-
     </div>
 
+    <button onclick="toggleIframe()" class="collapse-button">
+        <p class="faleCom"><%= homeData.data.faleCom %></p>
+        <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
+    </button>    
   </div>    
 </body>
 
+<script src="/js/countUp.js"></script>
 <script src="js/chat.js"></script>
 <script src="js/toggleIframe.js"></script>
 <script src="js/languageSwitcher.js"></script>
+<script src="js/countup.js"></script>
+<script src="js/breakText.js"></script>
+<script src="js/slider.js"></script>
 
 </html>
