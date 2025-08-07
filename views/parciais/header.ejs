@@ -20,7 +20,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><%= homeData.data.tagLine %></title>
+<title><%= localizedData.tagLine %></title>
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
+<meta property="og:title" content="<%= localizedData.tagLine %>">
+<meta property="og:description" content="<%= localizedData.catchFrase %>">
+<meta property="og:image" content="<%= homeData.data.logomental_redes.formats.large %>">
+<meta property="og:url" content="https://mentalmarketing.com.br">
+<meta property="og:type" content="website">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= localizedData.tagLine %>">
+<meta name="twitter:description" content="<%= localizedData.catchFrase %>">
+<meta name="twitter:image" content="<%= homeData.data.logomental_redes.formats.large %>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

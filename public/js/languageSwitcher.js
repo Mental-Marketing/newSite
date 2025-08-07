@@ -65,6 +65,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Função para atualizar meta tags
+    function updateMetaTags(tagLine, catchFrase) {
+        // Atualiza Open Graph meta tags
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        
+        if (ogTitle) ogTitle.setAttribute('content', tagLine);
+        if (ogDescription) ogDescription.setAttribute('content', catchFrase);
+        
+        // Atualiza Twitter Card meta tags
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+        
+        if (twitterTitle) twitterTitle.setAttribute('content', tagLine);
+        if (twitterDescription) twitterDescription.setAttribute('content', catchFrase);
+        
+        // Atualiza o título da página
+        document.title = tagLine;
+    }
+
     if (languageSelector && Array.isArray(localizations)) {
         languageSelector.addEventListener('change', function() {
             const selectedLocale = this.value;
@@ -87,6 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 document.querySelector('.closeFrase').textContent = homeData.data.closeFrase;
 
+                // Atualiza meta tags
+                updateMetaTags(homeData.data.tagLine, homeData.data.catchFrase);
+
                 breakText();
 
             } else {
@@ -108,6 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('.numbah_lp_txt').textContent = selectedLocalization.totalLanding_txt;
 
                     document.querySelector('.closeFrase').textContent = selectedLocalization.closeFrase;
+
+                    // Atualiza meta tags
+                    updateMetaTags(selectedLocalization.tagLine, selectedLocalization.catchFrase);
 
                     if(selectedLocalization.locale !== 'zh-Hans') {
                         breakText();                        
