@@ -276,11 +276,6 @@ PORT=4682
 Para suporte técnico ou dúvidas sobre o projeto:
 - devdevdev@mentalmarketing.com.br
 
-
-## 📄 Licença
-
-Este projeto está sob a licença [TIPO_DE_LICENÇA]. Veja o arquivo LICENSE para mais detalhes.
-
 ---
 
 **Desenvolvido com ❤️ pela equipe Mental Marketing**
