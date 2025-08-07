@@ -77,43 +77,57 @@ function detectUserLanguage(acceptLanguageHeader, availableLocales) {
 
 // Função para obter dados localizados
 function getLocalizedData(homeData, locale) {
-    if (locale === 'pt-BR') {
+    // Verifica se homeData e homeData.data existem
+    if (!homeData || !homeData.data) {
         return {
-            tagLine: homeData.data.tagLine,
-            catchFrase: homeData.data.catchFrase,
-            faleCom: homeData.data.faleCom,
-            geralNumbahs: homeData.data.geralNumbahs,
-            totalHTML_txt: homeData.data.totalHTML_txt,
-            totalEmails_txt: homeData.data.totalEmails_txt,
-            totalLanding_txt: homeData.data.totalLanding_txt,
-            closeFrase: homeData.data.closeFrase
+            tagLine: 'Mental Marketing',
+            catchFrase: 'Marketing Digital Inteligente',
+            faleCom: 'Fale Conosco',
+            geralNumbahs: 'Números Gerais',
+            totalHTML_txt: 'HTML',
+            totalEmails_txt: 'Emails',
+            totalLanding_txt: 'Landing Pages',
+            closeFrase: 'Frase de Fechamento'
         };
     }
 
-    const localization = homeData.data.localizations.find(loc => loc.locale === locale);
+    if (locale === 'pt-BR') {
+        return {
+            tagLine: homeData.data.tagLine || 'Mental Marketing',
+            catchFrase: homeData.data.catchFrase || 'Marketing Digital Inteligente',
+            faleCom: homeData.data.faleCom || 'Fale Conosco',
+            geralNumbahs: homeData.data.geralNumbahs || 'Números Gerais',
+            totalHTML_txt: homeData.data.totalHTML_txt || 'HTML',
+            totalEmails_txt: homeData.data.totalEmails_txt || 'Emails',
+            totalLanding_txt: homeData.data.totalLanding_txt || 'Landing Pages',
+            closeFrase: homeData.data.closeFrase || 'Frase de Fechamento'
+        };
+    }
+
+    const localization = homeData.data.localizations && homeData.data.localizations.find(loc => loc.locale === locale);
     if (localization) {
         return {
-            tagLine: localization.tagLine,
-            catchFrase: localization.catchFrase,
-            faleCom: localization.faleCom,
-            geralNumbahs: localization.geralNumbahs,
-            totalHTML_txt: localization.totalHTML_txt,
-            totalEmails_txt: localization.totalEmails_txt,
-            totalLanding_txt: localization.totalLanding_txt,
-            closeFrase: localization.closeFrase
+            tagLine: localization.tagLine || homeData.data.tagLine || 'Mental Marketing',
+            catchFrase: localization.catchFrase || homeData.data.catchFrase || 'Marketing Digital Inteligente',
+            faleCom: localization.faleCom || homeData.data.faleCom || 'Fale Conosco',
+            geralNumbahs: localization.geralNumbahs || homeData.data.geralNumbahs || 'Números Gerais',
+            totalHTML_txt: localization.totalHTML_txt || homeData.data.totalHTML_txt || 'HTML',
+            totalEmails_txt: localization.totalEmails_txt || homeData.data.totalEmails_txt || 'Emails',
+            totalLanding_txt: localization.totalLanding_txt || homeData.data.totalLanding_txt || 'Landing Pages',
+            closeFrase: localization.closeFrase || homeData.data.closeFrase || 'Frase de Fechamento'
         };
     }
 
     // Fallback para português se localização não encontrada
     return {
-        tagLine: homeData.data.tagLine,
-        catchFrase: homeData.data.catchFrase,
-        faleCom: homeData.data.faleCom,
-        geralNumbahs: homeData.data.geralNumbahs,
-        totalHTML_txt: homeData.data.totalHTML_txt,
-        totalEmails_txt: homeData.data.totalEmails_txt,
-        totalLanding_txt: homeData.data.totalLanding_txt,
-        closeFrase: homeData.data.closeFrase
+        tagLine: homeData.data.tagLine || 'Mental Marketing',
+        catchFrase: homeData.data.catchFrase || 'Marketing Digital Inteligente',
+        faleCom: homeData.data.faleCom || 'Fale Conosco',
+        geralNumbahs: homeData.data.geralNumbahs || 'Números Gerais',
+        totalHTML_txt: homeData.data.totalHTML_txt || 'HTML',
+        totalEmails_txt: homeData.data.totalEmails_txt || 'Emails',
+        totalLanding_txt: homeData.data.totalLanding_txt || 'Landing Pages',
+        closeFrase: homeData.data.closeFrase || 'Frase de Fechamento'
     };
 }
 
@@ -123,9 +137,17 @@ app.get('/', async (req, res) => {
         
         const homeData = response.data;
 
-        const logoMental = homeData.data.logoMental.url;
+        // Verifica se os dados necessários existem
+        if (!homeData || !homeData.data) {
+            console.error('Dados da API estão vazios ou malformados');
+            return res.status(500).send('Erro ao carregar dados da página.');
+        }
 
-        const localizations = homeData.data.localizations.map(localization => localization);
+        const logoMental = homeData.data.logoMental && homeData.data.logoMental.url ? homeData.data.logoMental.url : null;
+
+        const localizations = homeData.data.localizations && Array.isArray(homeData.data.localizations) 
+            ? homeData.data.localizations.map(localization => localization)
+            : [];
 
         // Detecta idioma preferido do usuário
         const availableLocales = ['pt-BR', ...localizations.map(loc => loc.locale)];
@@ -143,8 +165,8 @@ app.get('/', async (req, res) => {
             userLocale: userLocale
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error ao obter dados.');
+        console.error('Erro ao obter dados da API:', error);
+        res.status(500).send('Erro ao obter dados.');
     }
 });
 

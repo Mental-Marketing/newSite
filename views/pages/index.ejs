@@ -24,7 +24,7 @@
     <% 
       if (logoMental) { %>
         <img src="<%= BASE_URL + logoMental %>" 
-        alt="<%= homeData.data.tagLine %>" 
+        alt="<%= localizedData.tagLine %>" 
         class="logo" />
       <% } else { %>
         <p>Logo não disponível.</p>
@@ -32,31 +32,31 @@
     %>
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
     <p class="description breakText">
-      <%= homeData.data.catchFrase %>
+      <%= localizedData.catchFrase %>
     </p>
 
     <div class="numbahs">
       <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
-      <div class="numbah_geral_txt breakText"><%= homeData.data.geralNumbahs %></div>
+      <div class="numbah_geral_txt breakText"><%= localizedData.geralNumbahs %></div>
       <div class="numbah_display_container">
         <div class="numbah_display_item">
-          <div class="numbah_motion"><%= homeData.data.totalHTML %></div>
-          <div class="numbah_motion_txt"><%= homeData.data.totalHTML_txt %></div>
+          <div class="numbah_motion"><%= homeData.data.totalHTML || '0' %></div>
+          <div class="numbah_motion_txt"><%= localizedData.totalHTML_txt %></div>
         </div>
         <div class="numbah_display_item">
-          <div class="numbah_email"><%= homeData.data.totalEmails %></div>
-          <div class="numbah_email_txt"><%= homeData.data.totalEmails_txt %></div>
+          <div class="numbah_email"><%= homeData.data.totalEmails || '0' %></div>
+          <div class="numbah_email_txt"><%= localizedData.totalEmails_txt %></div>
         </div>
         <div class="numbah_display_item">
-          <div class="numbah_lp"><%= homeData.data.totalLanding %></div>
-          <div class="numbah_lp_txt"><%= homeData.data.totalLanding_txt %></div>
+          <div class="numbah_lp"><%= homeData.data.totalLanding || '0' %></div>
+          <div class="numbah_lp_txt"><%= localizedData.totalLanding_txt %></div>
         </div>
       </div>
     </div>
 
     <p class="line">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
     <p class="description breakText closeFrase">
-      <%= homeData.data.closeFrase %>
+      <%= localizedData.closeFrase %>
     </p>
 
     <div class="slider_section">
@@ -88,7 +88,7 @@
     </div>
 
     <button onclick="toggleIframe()" class="collapse-button">
-        <p class="faleCom"><%= homeData.data.faleCom %></p>
+        <p class="faleCom"><%= localizedData.faleCom %></p>
         <img src="images/robot_Icon-transp50.png" alt="Abrir Chat" class="button-icon" />
     </button>    
   </div>    
